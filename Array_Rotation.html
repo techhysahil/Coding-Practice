@@ -2,6 +2,29 @@
 <html>
 <head>
 	<title>Array Rotation</title>
+	<!-- Common Style -->
+	<style type="text/css">
+		input[type="text"]{
+			height: 30px;
+		    width: 250px;
+		    padding: 0px 0px 0px 10px;
+		    padding: 0px 0px 0px 10px;
+		    font-size: 14px;
+		    color: #aaa;
+		}
+		input:focus{
+			outline : 0px;
+		}
+		button{
+			height: 36px;
+		    width: 200px;
+		    background: #fff;
+		    border: 1px solid #999;
+		    font-size: 16px;
+		    color: #666;
+		}
+	</style>
+	<!-- Specific Style -->
 	<style type="text/css">
 		.center{
 			text-align: center;
@@ -54,7 +77,8 @@
 
 		/********* Execute Function **************/
 		// rotate_array_left([1,2,3,4,5], 1, "right");
-		function triggerRotateArray(){
+		function triggerRotateArray(event){
+			event.preventDefault();
 			var array = document.getElementById('arrayvalue').value,
 				rotation_no = document.getElementById('numberofrotation').value,
 				direction = document.querySelector('input[name="typeofdirection"]:checked').value,
@@ -73,11 +97,11 @@
 			<h2 class="center">Rotate Array</h2>
 			<div class="field_container">
 				<label for="arrayvalue">Enter array : </label>
-				<input type="text" id="arrayvalue" name="arrayvalue" value="" placeholder="Enter list separated by commas">	
+				<input type="text" id="arrayvalue" name="arrayvalue" value="" placeholder="Enter list e.g 2,3,6,7">	
 			</div>
 			<div class="field_container">
 				<label for="numberofrotation">Enter number of rotations : </label>
-				<input type="text" id="numberofrotation" name="numberofrotation" placeholder="Enter Array">
+				<input type="text" id="numberofrotation" name="numberofrotation" placeholder="Enter number">
 			</div>
 			<div class="field_container">
 				<label for="numberofrotation">Select type of rotation: </br> </label>
@@ -85,11 +109,11 @@
 				<input type="radio" name="typeofdirection" value="right"> Right	
 			</div>
 			<div class="field_container">
-				<input type="button" name="" onclick="triggerRotateArray()" value="Rotate array">
+				<button onclick="triggerRotateArray(event)">Rotate array</button>
 			</div>
 		</form>
 		<div class="resultedArray">
-			<h1>Final resulted array : <span id="result"></span></h1>
+			<h1>Final resulted array : </h1><span id="result"></span>
 		</div>
 	</section>
 </body>
