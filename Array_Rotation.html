@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Array Rotation</title>
+	<style type="text/css">
+		.center{
+			text-align: center;
+		}
+		#formView{
+			display: inline-block;
+		}
+		.field_container{
+			margin-bottom: 8px;
+		}
+		.field_container label{
+			width: 230px;
+    		display: inline-block;
+    		font-size: 18px;
+		}
+		.resultedArray{
+			display: inline-block;
+		    vertical-align: top;
+		    margin-left: 200px;
+		}
+	</style>
+</head>
+<body>
+	<script type="text/javascript">
+		function rotate_array_left(array,numbersToRotate, typeOfRotation){
+			//Check for array
+			if (Object.prototype.toString.call(array) === "[object Array]"){
+				//convert to integer array
+				array.map(Number);
+
+				//Logic for rotating array
+				for(var i=0;i<numbersToRotate;i++){
+					if(typeOfRotation === "left"){
+						var temp = array[0];
+						array.shift();
+						array.push(temp);	
+					}else if(typeOfRotation === "right"){
+						var temp = array[array.length - 1];
+						array.pop();
+						array.unshift(temp);	
+					}
+					
+				}
+				return array;
+			}
+		}
+
+		// Add function to window Object so that i can access it from console
+		window.rotate_array_left = rotate_array_left;
+
+		/********* Execute Function **************/
+		// rotate_array_left([1,2,3,4,5], 1, "right");
+		function triggerRotateArray(){
+			var array = document.getElementById('arrayvalue').value,
+				rotation_no = document.getElementById('numberofrotation').value,
+				direction = document.querySelector('input[name="typeofdirection"]:checked').value,
+				res = document.getElementById('result');
+
+				//Get array out of input string
+				array = array.split(',').map(Number);
+
+				var result = rotate_array_left(array,rotation_no, direction)
+				res.innerText = result;
+		}
+	</script>
+
+	<section>
+		<form id="formView">
+			<h2 class="center">Rotate Array</h2>
+			<div class="field_container">
+				<label for="arrayvalue">Enter array : </label>
+				<input type="text" id="arrayvalue" name="arrayvalue" value="" placeholder="Enter list separated by commas">	
+			</div>
+			<div class="field_container">
+				<label for="numberofrotation">Enter number of rotations : </label>
+				<input type="text" id="numberofrotation" name="numberofrotation" placeholder="Enter Array">
+			</div>
+			<div class="field_container">
+				<label for="numberofrotation">Select type of rotation: </br> </label>
+				<input type="radio" name="typeofdirection" value="left" checked> Left
+				<input type="radio" name="typeofdirection" value="right"> Right	
+			</div>
+			<div class="field_container">
+				<input type="button" name="" onclick="triggerRotateArray()" value="Rotate array">
+			</div>
+		</form>
+		<div class="resultedArray">
+			<h1>Final resulted array : <span id="result"></span></h1>
+		</div>
+	</section>
+</body>
+</html>
