@@ -3,7 +3,6 @@ input[type="text"]{
     height: 30px;
     width: 250px;
     padding: 0px 0px 0px 10px;
-    padding: 0px 0px 0px 10px;
     font-size: 14px;
     color: #aaa;
     vertical-align: top;
@@ -13,7 +12,6 @@ input[type="number"]{
     height: 30px;
     width: 250px;
     padding: 0px 0px 0px 10px;
-    padding: 0px 0px 0px 10px;
     font-size: 14px;
     color: #aaa;
     vertical-align: top;
@@ -21,6 +19,19 @@ input[type="number"]{
 input:focus{
     outline : 0px;
 }
+/*Textarea Style*/
+textarea{
+    width: 350px;
+    padding: 10px;
+    font-size: 14px;
+    color: #aaa;
+    resize: none;
+    vertical-align: top;
+}
+textarea:focus{
+    outline : 0px;
+}
+/*Button Style*/
 button{
     height: 36px;
     width: 200px;

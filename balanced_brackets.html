@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ransom Note</title>
+	<!-- Common Style -->
+	<link rel="stylesheet" type="text/css" href="css/common.css">
+
+	<script type="text/javascript" src="js/balanced_brackets.js"></script>
+</head>
+<body>
+	<header>
+		<h2 class="center">Stacks: Balanced Brackets</h2>	
+		<p><b>Problem statement: </b>A bracket is considered to be any one of the following characters: (, ), {, }, [, or ].</p>
+
+		<p>Two brackets are considered to be a matched pair if the an opening bracket (i.e., (, [, or {) occurs to the left of a closing bracket (i.e., ), ], or }) of the exact same type. There are three types of matched pairs of brackets: [], {}, and ().</p>
+
+		<p>A matching pair of brackets is not balanced if the set of brackets it encloses are not matched. For example, {[(])} is not balanced because the contents in between { and } are not balanced. The pair of square brackets encloses a single, unbalanced opening bracket, (, and the pair of parentheses encloses a single, unbalanced closing square bracket, ].</p>
+
+		<p>By this logic, we say a sequence of brackets is considered to be balanced if the following conditions are met:</p>
+		<ul>
+			<li>It contains no unmatched brackets.</li>
+			<li>The subset of brackets enclosed within the confines of a matched pair of brackets is also a matched pair of brackets.</li>
+		</ul>
+		<p>Given  strings of brackets, determine whether each sequence of brackets is balanced. If a string is balanced, print YES on a new line; otherwise, print NO on a new line.</p>
+	</header>
+	
+	<section>
+		<form>
+			<div class="field_container">
+				<label for="lineOfStr">Number of words in the magazine</label>
+				<input type="number" name="" id="lineOfStr" placeholder="Input line of strings">
+			</div>
+			<div class="field_container">
+				<label for="string_input">Number of words in the magazine</label>
+				<textarea 
+				rows="4" 
+				cols="50" 
+				placeholder="Enter Input here e.g {[()]}
+				  {[(])}
+				  {{[[(())]]}}" 
+				id="string_input"></textarea>
+			</div>
+			<div class="field_container">
+				<button onclick="checkBalancedString(event)"> Check </button>
+			</div>
+		</form>
+	</section>
+</body>
+</html>
