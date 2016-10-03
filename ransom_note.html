@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ransom Note</title>
+	<!-- Common Style -->
+	<link rel="stylesheet" type="text/css" href="css/common.css">
+
+	<script type="text/javascript" src="js/ransom_note.js"></script>
+</head>
+<body>
+	<header>
+		<h2 class="center">Ransom Note</h2>	
+		<p><b>Problem statement: </b>A kidnapper wrote a ransom note but is worried it will be traced back to him. He found a magazine and wants to know if he can cut out whole words from it and use them to create an untraceable replica of his ransom note. The words in his note are case-sensitive and he must use whole words available in the magazine, meaning he cannot use substrings or concatenation to create the words he needs.</p>
+		<p>Given the words in the magazine and the words in the ransom note, print <b>Yes</b> if he can replicate his ransom note exactly using whole words from the magazine; otherwise, print <b>No</b>.</p>
+	</header>
+	
+	<section>
+		<form>
+			<div class="field_container">
+				<label for="magazine_string_len">Number of words in the magazine</label>
+				<input type="number" name="" id="magazine_string_len" placeholder="Enter Number">
+			</div>
+			<div class="field_container">
+				<label for="note_string_len">Number of words in the Note</label>
+				<input type="number" name="" id="note_string_len" placeholder="Enter number">
+			</div>
+			<div class="field_container">
+				<label for="magazine_string">Magazine string</label>
+				<input type="text" name="" id="magazine_string" placeholder="Enter Magazine string">
+			</div>
+			<div class="field_container">
+				<label for="note_string">Note string</label>
+				<input type="text" name="" id="note_string" placeholder="Enter Note string">
+			</div>
+			<div class="field_container">
+				<button onclick="checkRansonNote(event)"> Check </button>
+			</div>
+		</form>
+	</section>
+</body>
+</html>

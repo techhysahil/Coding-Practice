@@ -1,3 +1,4 @@
+/*Text Input*/
 input[type="text"]{
     height: 30px;
     width: 250px;
@@ -5,6 +6,17 @@ input[type="text"]{
     padding: 0px 0px 0px 10px;
     font-size: 14px;
     color: #aaa;
+    vertical-align: top;
+}
+/*Number Input*/
+input[type="number"]{
+    height: 30px;
+    width: 250px;
+    padding: 0px 0px 0px 10px;
+    padding: 0px 0px 0px 10px;
+    font-size: 14px;
+    color: #aaa;
+    vertical-align: top;
 }
 input:focus{
     outline : 0px;
