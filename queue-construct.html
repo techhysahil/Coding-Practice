@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Queue (A tale of two stacks)</title>
+
+	<!-- Common Style -->
+	<link rel="stylesheet" type="text/css" href="css/common.css">
+
+	<!-- Custom style -->
+	<style type="text/css">
+		.liveQueue{
+			border: 1px solid #999;
+			margin: 0px 100px;
+			position: relative;
+			border-collapse: collapse;
+		}
+		.liveQueue::before{
+			content: "Front";
+			position: absolute;
+		    left: -40px;
+		    top: 50%;
+    		transform: translateY(-50%);
+		}
+		.liveQueue::after{
+			content: "End";
+			position: absolute;
+		    right: -40px;
+		    top: 50%;
+    		transform: translateY(-50%);
+		}
+		.liveQueue tr td{
+			padding: 8px;
+			border: 1px solid #999;
+		}
+	</style>
+
+	<script type="text/javascript" src="js/queue-construct.js"></script>
+</head>
+<body>
+	<header>
+		<h2 class="center">Queues: A tale of two stacks</h2>	
+		<p>Problem:A queue is an abstract data type that maintains the order in which elements were added to it, allowing the oldest elements to be removed from the front and new elements to be added to the rear. This is called a First-In-First-Out (FIFO) data structure because the first element added to the queue (i.e., the one that has been waiting the longest) is always the first one to be removed.</p>
+
+		<p>A basic queue has the following operations:</p>
+
+		<p>1. Enqueue: add a new element to the end of the queue.</p>
+		<p>2. Dequeue: remove the element from the front of the queue and return it.</p>
+		<p>3. In this challenge, you must first implement a queue using two stacks. Then process  queries, where each query is one of the following  types:</p>
+
+		<p>1 x: Enqueue element  into the end of the queue.</p>
+		<p>2: Dequeue the element at the front of the queue.</p>
+		<p>3: Print the element at the front of the queue.</p>
+
+		<p>Input Format</p>
+
+		<p>The first line contains a single integer, , denoting the number of queries. 
+		Each line  of the  subsequent lines contains a single query in the form described in the problem statement above. All three queries start with an integer denoting the query , but only query  is followed by an additional space-separated value, , denoting the value to be enqueued.</p>
+	</header>
+
+	<section>
+		<form>
+			<h3>Live Queue:</h3>
+			<table id="js_liveQueue" class="liveQueue">
+				<tr>
+					<td>12</td>
+				</tr>
+			</table>
+			<h3>Enqueue:</h3>
+			<div class="field_container">
+				<label for="addNumber">Enter Number</label>
+				<input type="number" name="" id="addNumber" placeholder="Input number">
+			</div>
+			<div class="field_container">
+				<button onclick="addNumberToQueue(event)"> Enqueue </button>
+			</div>
+
+			<h3>Dequeue:</h3>
+			<div class="field_container">
+				<button onclick="deleteNumberToQueue(event)"> Dequeue </button>
+			</div>
+
+			<h3>Prinit front element:</h3>
+			<div class="field_container">
+				<button onclick="printNumberToQueue(event)"> Print head element </button>
+			</div>
+		</form>
+	</section>
+
+</body>
+</html>
