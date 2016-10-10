@@ -141,25 +141,46 @@ var DT = {};
 	        inOrder(obj);
 		}
 		if(options.type === "preorder"){
-			function inOrder(obj){
+			function preOrder(obj){
 		        if (obj){
 
+		        	callback.call(this,obj.element);
+
 		            if (obj.left !== null){
-		                inOrder(obj.leftchild);
+		                preOrder(obj.leftchild);
 		            }            
 
-		            callback.call(this,obj.element);
+		            
 
 		            if (obj.right !== null){
-		                inOrder(obj.rightchild);
+		                preOrder(obj.rightchild);
 		            }
+
 		        }
 		    }
 	        //start with the root
-	        inOrder(obj);
+	        preOrder(obj);
 		}
 		if(options.type === "postorder"){
+			function postOrder(obj){
+		        if (obj){
 
+		            if (obj.left !== null){
+		                postOrder(obj.leftchild);
+		            }            
+
+		            
+
+		            if (obj.right !== null){
+		                postOrder(obj.rightchild);
+		            }
+
+		            callback.call(this,obj.element);
+
+		        }
+		    }
+	        //start with the root
+	        postOrder(obj);
 		}
 	}
 
