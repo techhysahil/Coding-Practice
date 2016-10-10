@@ -3,7 +3,7 @@ var DT = {};
 	DT.BST = function(){
 		this.root = null;
 		this.tree = null;
-	}
+	};
 
 	/*******************************
 			Private function
@@ -19,7 +19,7 @@ var DT = {};
 				element : x,
 				leftchild : null,
 				rightchild : null
-			}
+			};
 			this.root = x;
 			flag = false;
 		}else{
@@ -32,7 +32,7 @@ var DT = {};
 							element : x,
 							leftchild : null,
 							rightchild : null		
-						}	
+						};
 						flag = false;
 					}else{
 						data = data.rightchild;
@@ -44,7 +44,7 @@ var DT = {};
 							element : x,
 							leftchild : null,
 							rightchild : null		
-						}	
+						};
 						flag = false;
 					}else{
 						data = data.leftchild;
@@ -54,8 +54,8 @@ var DT = {};
 			}
 			
 		}
-	}
-	//Remove Function
+	};
+	//Contains Function
 	DT.BST.prototype.contains = function(x){
 		var flag = true,
 			node = this.tree;
@@ -66,9 +66,9 @@ var DT = {};
 					flag = false;
 					return true;
 				}else if(x > node.element){
-					node = node.rightchild;
+					node = node.rightchildchild;
 				}else if(x < node.element){
-					node = node.leftchild;
+					node = node.leftchildchild;
 				}	
 			}else{
 				return false;
@@ -83,8 +83,8 @@ var DT = {};
 
 			if(node != null){
 				while(flag){
-					if(node.leftchild){
-						node = node.leftchild;
+					if(node.leftchildchild){
+						node = node.leftchildchild;
 					}else{
 						flag = false;
 						return node.element;
@@ -101,8 +101,8 @@ var DT = {};
 
 			if(node != null){
 				while(flag){
-					if(node.rightchild){
-						node = node.rightchild;
+					if(node.rightchildchild){
+						node = node.rightchildchild;
 					}else{
 						flag = false;
 						return node.element;
@@ -303,10 +303,9 @@ var DT = {};
         return PathArr[0];
 	}
 
-	//Convert BST tree to String Function
+	//Chech tree is BST Function
 	DT.BST.prototype.isBST = function(obj){
-		var flag = true,
-			node = obj.tree,
+		var node = obj.tree,
 			minValue = this.minValue(),
 			maxValue = this.maxValue();
 
@@ -315,11 +314,11 @@ var DT = {};
 				if(node.element < minValue || node.element > maxValue){
 					return false;
 				}
-				if(node.leftchild){
-					return isSearchable(node.leftchild,minValue,node.element);
+				if(node.leftchildchild){
+					return isSearchable(node.leftchildchild,minValue,node.element);
 				}
-				if(node.rightchild){
-					return isSearchable(node.rightchild,node.element,maxValue);
+				if(node.rightchildchild){
+					return isSearchable(node.rightchildchild,node.element,maxValue);
 				}	
 			}else{
 				return false;
@@ -330,3 +329,152 @@ var DT = {};
 		var res = isSearchable(node,minValue,maxValue);	
 		return res;
 	}
+
+
+
+	DT.BST.prototype.remove = function(value){
+    
+        var found       = false,
+            parent      = null,
+            node     = this.tree,
+            childCount,
+            replacement,
+            replacementParent;
+            
+        //make sure there's a node to search
+        while(!found && node){
+        
+            //if the value is less than the node node's, go left
+            if (value < node.element){
+                parent = node;
+                node = node.leftchild;
+                
+            //if the value is greater than the node node's, go right
+            } else if (value > node.element){
+                parent = node;
+                node = node.rightchild;
+                
+            //values are equal, found it!
+            } else {
+                found = true;
+            }
+        }
+        
+        //only proceed if the node was found
+        if (found){
+        
+            //figure out how many children
+            childCount = (node.leftchild !== null ? 1 : 0) + (node.rightchild !== null ? 1 : 0);
+        
+            //special case: the value is at the root
+            if (node === this.tree){
+                switch(childCount){
+                
+                    //no children, just erase the root
+                    case 0:
+                        this.tree = null;
+                        break;
+                        
+                    //one child, use one as the root
+                    case 1:
+                        this.tree = (node.rightchild === null ? node.leftchild : node.rightchild);
+                        break;
+                        
+                    //two children, little work to do
+                    case 2:
+
+                        //new root will be the old root's left child...maybe
+                        replacement = this.tree.leftchild;
+                        
+                        //find the right-most leaf node to be the real new root
+                        while (replacement.rightchild !== null){
+                            replacementParent = replacement;
+                            replacement = replacement.rightchild;
+                        }
+         
+                        //it's not the first node on the left
+                        if (replacementParent !== null){
+                        
+                            //remove the new root from it's previous position
+                            replacementParent.rightchild = replacement.leftchild;
+                            
+                            //give the new root all of the old root's children
+                            replacement.rightchild = this.tree.rightchild;
+                            replacement.leftchild = this.tree.leftchild;
+                        } else {
+                        
+                            //just assign the children
+                            replacement.rightchild = this.tree.rightchild;
+                        }
+                        
+                        //officially assign new root
+                        this.tree = replacement;
+                    
+                    //no default
+                
+                }        
+
+            //non-root values
+            } else {
+            
+                switch (childCount){
+                
+                    //no children, just remove it from the parent
+                    case 0:
+                        //if the node value is less than its parent's, null out the left pointer
+                        if (node.element < parent.element){
+                            parent.leftchild = null;
+                            
+                        //if the node value is greater than its parent's, null out the right pointer
+                        } else {
+                            parent.rightchildchild = null;
+                        }
+                        break;
+                        
+                    //one child, just reassign to parent
+                    case 1:
+                        //if the node value is less than its parent's, reset the left pointer
+                        if (node.element < parent.element){
+                            parent.leftchild = (node.leftchild === null ? node.rightchild : node.leftchild);
+                            
+                        //if the node value is greater than its parent's, reset the right pointer
+                        } else {
+                            parent.rightchild = (node.leftchild === null ? node.rightchild : node.leftchild);
+                        }
+                        break;    
+
+                    //two children, a bit more complicated
+                    case 2:
+                    
+                        //reset pointers for new traversal
+                        replacement = node.leftchild;
+                        replacementParent = node;
+                        
+                        //find the right-most node
+                        while(replacement.rightchild !== null){
+                            replacementParent = replacement;
+                            replacement = replacement.rightchild;                            
+                        }
+                    
+                        replacementParent.rightchild = replacement.leftchild;
+                        
+                        //assign children to the replacement
+                        replacement.rightchild = node.rightchild;
+                        replacement.leftchild = node.leftchild;
+                        
+                        //place the replacement in the right spot
+                        if (node.element < parent.element){
+                            parent.leftchild = replacement;
+                        } else {
+                            parent.rightchild = replacement;
+                        }                        
+                                        
+                    //no default
+                
+                
+                }
+            
+            }
+        
+        }   
+    }
