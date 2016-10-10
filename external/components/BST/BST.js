@@ -1,48 +1,3 @@
-/****** Written By Ritchie ********/
-// var DT = {};
-// 	//Binnary Search Tree Constructor
-// 	DT.BST = function(){
-// 		this.root = null;
-// 		this.tree = {};
-// 	}
-
-// 	DT.BST.prototype.add = function(x){
-// 		var dataEnter = true;
-// 		if(!Object.keys(this.tree).length) {
-// 			this.tree = {element : x,
-// 			leftchild : null,
-// 			rightchild : null};
-// 			dataEnter = false;
-// 		}
-// 		else {
-// 			var dataCheck = this.tree
-// 		}
-// 		while (dataEnter) {
-// 			if(dataCheck.element < x) {
-// 				if(dataCheck.rightchild == null) {
-// 					dataCheck.rightchild = {element : x,
-// 						leftchild : null,
-// 						rightchild : null};
-// 						dataEnter = false;
-// 				}
-// 				else {
-// 					dataCheck = dataCheck.rightchild;
-// 				}
-// 			}
-// 			else {
-// 				if(dataCheck.leftchild == null) {
-// 					dataCheck.leftchild = {element : x,
-// 						leftchild : null,
-// 						rightchild : null};
-// 						dataEnter = false;
-// 				}
-// 				else {
-// 					dataCheck = dataCheck.leftchild;
-// 				}
-// 			}
-// 		}
-// 	}
-
 var DT = {};
 	//Binnary Search Tree Constructor
 	DT.BST = function(){
@@ -53,22 +8,6 @@ var DT = {};
 	/*******************************
 			Private function
 	*******************************/
-
-	//helper function
-    // function inOrder(obj,callback){
-    //     if (obj){
-
-    //         if (obj.left !== null){
-    //             inOrder(obj.leftchild);
-    //         }            
-
-    //         callback.call(this,obj.element);
-
-    //         if (obj.right !== null){
-    //             inOrder(obj.rightchild);
-    //         }
-    //     }
-    // }
 
 	//Add Function
 	DT.BST.prototype.add = function(x){
@@ -181,26 +120,6 @@ var DT = {};
 	//Traversal BST tree Function
 	DT.BST.prototype.traversalTree = function(options,callback){
 		var obj = this.tree;
-		// Normal Javascript Object Traversal
-		// if(typeof(obj) === "object"){
-		// 	for(var i in obj){
-		// 		if(typeof(obj[i]) === "object"){
-		// 			// If object is Object
-		// 			if(Object.prototype.toString.call(obj[i]) === "[object Object]"){
-		// 				traverseJSON(obj[i]);
-		// 			}
-		// 			// // If object is Array
-		// 			if(Object.prototype.toString.call(obj[i] === "[object Array]")){
-		// 				var data = obj[i];
-		// 				for(var j=0; j<data.length;j++){
-		// 					traverseJSON(data[j]);
-		// 				}
-		// 			}
-		// 		}else{
-		// 			obj[i] == callback(obj[i]);
-		// 		}
-		// 	}	
-		// }
 
 		//Normal BST tree traversal
 		if(options.type === "inorder"){
@@ -222,7 +141,22 @@ var DT = {};
 	        inOrder(obj);
 		}
 		if(options.type === "preorder"){
+			function inOrder(obj){
+		        if (obj){
 
+		            if (obj.left !== null){
+		                inOrder(obj.leftchild);
+		            }            
+
+		            callback.call(this,obj.element);
+
+		            if (obj.right !== null){
+		                inOrder(obj.rightchild);
+		            }
+		        }
+		    }
+	        //start with the root
+	        inOrder(obj);
 		}
 		if(options.type === "postorder"){
 
@@ -350,4 +284,3 @@ var DT = {};
         PathArr.reverse();
         return PathArr[0];
 	}
-	
