@@ -75,7 +75,7 @@ var DT = {};
 			}
 			
 		}
-	}
+	};
 	//Find minValue Function
 	DT.BST.prototype.minValue = function(){
 		var flag = true,
@@ -93,7 +93,7 @@ var DT = {};
 			}else{
 				return false;
 			}
-	}
+	};
 	//Find maxValue Function
 	DT.BST.prototype.maxValue = function(){
 		var flag = true,
@@ -111,12 +111,12 @@ var DT = {};
 			}else{
 				return false;
 			}
-	}
+	};
 	//Delete BST Function
 	DT.BST.prototype.removeTree = function(){
 		this.root = null;
 		this.tree = null;
-	}
+	};
 	//Traversal BST tree Function
 	DT.BST.prototype.traversalTree = function(options,callback){
 		var obj = this.tree;
@@ -182,7 +182,7 @@ var DT = {};
 	        //start with the root
 	        postOrder(obj);
 		}
-	}
+	};
 
 	//Get BST size Function
 	DT.BST.prototype.size = function(callback){
@@ -207,7 +207,7 @@ var DT = {};
         inOrder(obj);
 
         return size;
-	}
+	};
 
 	//Convert BST tree to Array Function
 	DT.BST.prototype.toArray = function(){
@@ -232,7 +232,7 @@ var DT = {};
         inOrder(obj);
 
         return arr;
-	}
+	};
 
 	//Convert BST tree to String Function
 	DT.BST.prototype.toString = function(){
@@ -257,7 +257,7 @@ var DT = {};
         inOrder(obj);
 
         return arr.toString();
-	}
+	};
 
 	//Convert BST tree to String Function
 	DT.BST.prototype.maxDepth = function(){
@@ -301,7 +301,7 @@ var DT = {};
         PathArr.sort();
         PathArr.reverse();
         return PathArr[0];
-	}
+	};
 
 	//Chech tree is BST Function
 	DT.BST.prototype.isBST = function(obj){
@@ -328,7 +328,7 @@ var DT = {};
 		}
 		var res = isSearchable(node,minValue,maxValue);	
 		return res;
-	}
+	};
 
 
 
@@ -477,4 +477,4 @@ var DT = {};
             }
         
         }   
-    }
+    };
