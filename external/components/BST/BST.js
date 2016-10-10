@@ -277,9 +277,6 @@ var DT = {};
 	            	PathArr.push(size);
 	            }            
 
-	            // // callback.call(this,obj.element);
-	            // size = size+1;
-
 	            if(obj.element === root){
 	        		traverseTopNode = true;
 	        		size = 1;
@@ -304,4 +301,32 @@ var DT = {};
         PathArr.sort();
         PathArr.reverse();
         return PathArr[0];
+	}
+
+	//Convert BST tree to String Function
+	DT.BST.prototype.isBST = function(obj){
+		var flag = true,
+			node = obj.tree,
+			minValue = this.minValue(),
+			maxValue = this.maxValue();
+
+		function isSearchable(node, minValue,maxValue){
+			if(node && node.element){
+				if(node.element < minValue || node.element > maxValue){
+					return false;
+				}
+				if(node.leftchild){
+					return isSearchable(node.leftchild,minValue,node.element);
+				}
+				if(node.rightchild){
+					return isSearchable(node.rightchild,node.element,maxValue);
+				}	
+			}else{
+				return false;
+			}
+
+			return true;
+		}
+		var res = isSearchable(node,minValue,maxValue);	
+		return res;
 	}
