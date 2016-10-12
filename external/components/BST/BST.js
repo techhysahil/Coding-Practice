@@ -427,7 +427,7 @@ var DT = {};
                             
                         //if the node value is greater than its parent's, null out the right pointer
                         } else {
-                            parent.rightchildchild = null;
+                            parent.rightchild = null;
                         }
                         break;
                         
@@ -456,7 +456,13 @@ var DT = {};
                             replacement = replacement.rightchild;                            
                         }
                     
-                        replacementParent.rightchild = replacement.leftchild;
+                        if (replacementParent.rightchild === replacement) {
+                             replacementParent.rightchild = replacement.leftchild;
+                         } else { 
+                             //replacement will be on the left when the left most subtree
+                             //of the node to remove has no children to the right
+                             replacementParent.leftchild = replacement.leftchild;
+                         }
                         
                         //assign children to the replacement
                         replacement.rightchild = node.rightchild;
