@@ -373,6 +373,7 @@ var DT = {};
                     //no children, just erase the root
                     case 0:
                         this.tree = null;
+                        this.root = null;
                         break;
                         
                     //one child, use one as the root
@@ -409,6 +410,7 @@ var DT = {};
                         
                         //officially assign new root
                         this.tree = replacement;
+                        this.root = replacement.element;
                     
                     //no default
                 
