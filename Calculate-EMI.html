@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculate EMI</title>
+	<!-- Common Style -->
+	<link rel="stylesheet" type="text/css" href="css/common.css">
+
+	<script type="text/javascript" src="./jsLib/jquery-1.10.js"></script>
+	<script type="text/javascript">
+			function calculateEMI(event){
+				event.preventDefault();
+				var princi_amt = parseFloat($("#principle-amount").val()),
+					int_rates = parseFloat($("#intrest-rates").val())/1200,
+					tenture_in_months = parseFloat($("#loan-tenture").val());
+
+				var t1 = 1+int_rates;
+				var temp = Math.pow(t1,tenture_in_months);	
+
+				var f1 = princi_amt * int_rates;
+				var f2 = temp/(temp - 1);
+				var final_amt = Math.round(f1 * f2);
+
+				$(".final-results").removeClass('hide');
+				$("#monthly-payable").html("Rs. "+final_amt);
+			}
+	</script>
+	<style type="text/css">
+		.final-results{
+			font-size: 20px;
+			color: #aaa;
+		}
+		#monthly-payable{
+			color: #999;
+			font-weight: bold;
+		}
+		.hide{
+			opacity: 0;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<h2 class="center">Calculate EMI</h2>	
+	</header>
+	
+	<section>
+		<form>
+			<div class="field_container">
+				<label for="principle-amount">Home Loan Amount</label>
+				<input type="text" name="" id="principle-amount" placeholder="50,000" value="50000">
+			</div>
+			<div class="field_container">
+				<label for="intrest-rates">Interest Rates</label>
+				<input type="text" name="" id="intrest-rates" placeholder="14" value="14">
+			</div>
+			<div class="field_container">
+				<label for="loan-tenture">Loan Tenture</label>
+				<input type="text" name="" id="loan-tenture" placeholder="5" value="5">
+			</div>
+
+			<div class="field_container">
+				<button onclick="calculateEMI(event)"> Calculate </button>
+			</div>
+
+			<div class="final-results hide">
+				<div>You have to pay: <span id="monthly-payable"></span>/month</div>
+			</div>
+		</form>
+	</section>
+</body>
+</html>
